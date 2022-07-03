@@ -4,6 +4,7 @@ const createError = require("http-errors");
 const express = require("express");
 const mongoose = require("mongoose");
 const http = require("http");
+const cors = require("cors");
 
 const app = express();
 
@@ -19,6 +20,12 @@ mongoose.connection.once("open", () => {
 mongoose.connection.on("error", (error) => {
   console.log(error.message);
 });
+
+const webSocket = require("./src/utils/socketio");
+
+webSocket(server);
+
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
