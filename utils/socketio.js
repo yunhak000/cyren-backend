@@ -26,6 +26,14 @@ module.exports = (server) => {
       socket.to(email).emit("setting-monitoring", isMonitoring);
     });
 
+    socket.on("request-alert-sounding", (email) => {
+      socket.broadcast.to(email).emit("response-alert-sounding");
+    });
+
+    socket.on("request-alert-off", (email) => {
+      socket.broadcast.to(email).emit("response-alert-off");
+    });
+
     socket.on("disconnect", () => {
       console.log("disconnected");
 

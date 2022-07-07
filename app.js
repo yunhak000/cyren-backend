@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 const http = require("http");
 const cors = require("cors");
 
+const router = require("./routes/index");
+
 const app = express();
 
 const port = process.env.PORT || 8080;
@@ -21,7 +23,7 @@ mongoose.connection.on("error", (error) => {
   console.log(error.message);
 });
 
-const webSocket = require("./src/utils/socketio");
+const webSocket = require("./utils/socketio");
 
 webSocket(server);
 
@@ -29,6 +31,8 @@ app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use("/photo", router);
 
 app.use(function (req, res, next) {
   next(createError(404));
