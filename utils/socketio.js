@@ -31,7 +31,11 @@ module.exports = (server) => {
     });
 
     socket.on("request-alert-off", (email) => {
-      socket.broadcast.to(email).emit("response-alert-off");
+      socket.to(email).emit("response-alert-off");
+    });
+
+    socket.on("change-photos", (email) => {
+      socket.to(email).emit("call-photo-list");
     });
 
     socket.on("disconnect", () => {
