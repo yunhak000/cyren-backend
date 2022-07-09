@@ -1,9 +1,13 @@
 const express = require("express");
-const controller = require("../controllers/photos");
+const photoController = require("../controllers/photos");
+const locationController = require("../controllers/locations");
 const router = express.Router();
 
-router.post("/newPhotos", controller.createPhoto);
-router.post("/photoLists", controller.getPhotoList);
-router.post("/removePhotos", controller.removePhoto);
+router.post("/newPhotos", photoController.createPhoto);
+router.post("/photoLists", photoController.getPhotoList);
+router.post("/removePhotos", photoController.removePhoto);
+
+router.post("/nowLocations", locationController.nowLocation);
+router.post("/lastLocations", locationController.lastLocation);
 
 module.exports = router;

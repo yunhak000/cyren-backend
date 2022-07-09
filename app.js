@@ -33,6 +33,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/photos", router);
+app.use("/locations", router);
 
 app.use(function (req, res, next) {
   next(createError(404));
