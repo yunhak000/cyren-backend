@@ -16,7 +16,7 @@ exports.nowLocation = async (req, res, next) => {
       }
     );
 
-    res.status(200).send("success");
+    return res.status(200).end();
   } catch (err) {
     next(err);
   }
@@ -26,7 +26,7 @@ exports.lastLocation = async (req, res, next) => {
   try {
     const location = await Location.find({ userEmail: req.body.userEmail });
 
-    res.status(200).json(location);
+    return res.status(200).send(location);
   } catch (err) {
     next(err);
   }
