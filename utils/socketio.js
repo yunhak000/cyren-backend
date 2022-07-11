@@ -19,11 +19,11 @@ module.exports = (server) => {
 
       socket.join(email);
 
-      safetyDevice.email && socket.to(safetyDevice.email).emit("request-monitoring-state");
+      safetyDevice.email && socket.broadcast.to(safetyDevice.email).emit("request-monitoring-state");
     });
 
-    socket.on("response-monitoring-state", (isMonitoring, email) => {
-      socket.to(email).emit("setting-monitoring", isMonitoring);
+    socket.on("response-monitoring-state", (isMonitoring, email, isAlert) => {
+      socket.broadcast.to(email).emit("setting-monitoring", isMonitoring, isAlert);
     });
 
     socket.on("request-alert-sounding", (email) => {
@@ -31,11 +31,11 @@ module.exports = (server) => {
     });
 
     socket.on("request-alert-off", (email) => {
-      socket.to(email).emit("response-alert-off");
+      socket.broadcast.to(email).emit("response-alert-off");
     });
 
     socket.on("change-photos", (email) => {
-      socket.to(email).emit("call-photo-list");
+      socket.broadcast.to(email).emit("call-photo-list");
     });
 
     socket.on("disconnect", () => {

@@ -12,7 +12,7 @@ exports.createPhoto = async (req, res, next) => {
 
     await photo.save();
 
-    res.send("success");
+    return res.status(200).end();
   } catch (err) {
     next(err);
   }
@@ -22,7 +22,7 @@ exports.getPhotoList = async (req, res, next) => {
   try {
     const photos = await Photo.find({ userEmail: req.body.userEmail, date: req.body.date }).exec();
 
-    res.json(photos);
+    return res.status(200).send(photos);
   } catch (err) {
     next(err);
   }
@@ -34,7 +34,7 @@ exports.removePhoto = (req, res, next) => {
       await Photo.deleteOne({ fileName: photo.Key });
     });
 
-    res.send("success");
+    return res.status(200).end();
   } catch (err) {
     next(err);
   }
