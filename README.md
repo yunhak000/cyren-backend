@@ -24,6 +24,72 @@ Siren은 공공장소에서 소중한 노트북의 도난을 방지해주는 서
 
 <br>
 
+## 🎬 **Getting Started**
+
+### **Client**
+
+```
+git clone https://github.com/yunhak000/siren-frontend.git
+```
+
+환경설정 (.env file)을 아래와 같이 입력해야 합니다.
+```
+REACT_APP_API_KEY=<YOUR_API_KEY>
+REACT_APP_AUTH_DOMAIN=<YOUR_AUTH_DOMAIN>
+REACT_APP_PROJECT_ID=<YOUR_PROJECT_ID>
+REACT_APP_STORAGE_BUCKET=<YOUR_STORAGE_BUCKET>
+REACT_APP_MESSAGING_SENDER_ID=<YOUR_MESSAGING_SENDER_ID>
+REACT_APP_APP_ID=<YOUR_APP_ID>
+REACT_APP_MEASEREMENT_ID=<YOUR_MEASEREMENT_ID>
+
+REACT_APP_SERVER_KEY=<YOUR_SERVER_KEY>
+REACT_APP_VAPID_KEY=<YOUR_VAPID_KEY>
+
+REACT_APP_SERVER_URL=<YOUR_SERVER_URL>
+
+REACT_APP_S3_ACCESS_KEY=<YOUR_S3_ACCESS_KEY>
+REACT_APP_S3_SECRET_ACCESS_KEY=<YOUR_S3_SECRET_ACCESS_KEY>
+REACT_APP_S3_BUCKET=<YOUR_S3_BUCKET>
+REACT_APP_S3_REGION=<YOUR_S3_REGION>
+
+REACT_APP_KAKAOMAP_API_KEY=<YOUR_KAKAOMAP_API_KEY>
+```
+
+```
+npm install
+npm start
+```
+
+### **Server**
+
+```
+git clone https://github.com/yunhak000/siren-backend.git
+```
+
+환경설정 (.env file)을 아래와 같이 입력해야 합니다.
+```
+MONGO_URL=<YOUR_MONGO_URL>
+PORT=<YOUR_PORT>
+
+FIREBASE_TYPE=<YOUR_FIREBASE_TYPE>
+FIREBASE_PROJECT_ID=<YOUR_FIREBASE_PROJECT_ID>
+FIREBASE_PRIVATE_KEY_ID=<YOUR_FIREBASE_PRIVATE_KEY_ID>
+FIREBASE_PRIVATE_KEY=<YOUR_FIREBASE_PRIVATE_KEY>
+FIREBASE_CLIENT_EMAIL=<YOUR_FIREBASE_CLIENT_EMAIL>
+FIREBASE_CLIENT_ID=<YOUR_FIREBASE_CLIENT_ID>
+FIREBASE_AUTH_URI=<YOUR_FIREBASE_AUTH_URI>
+FIREBASE_TOKEN_URI=<YOUR_FIREBASE_TOKEN_URI>
+FIREBASE_AUTH_PROVIDER_X509_CERT_URL=<YOUR_FIREBASE_AUTH_PROVIDER_X509_CERT_URL>
+FIREBASE_CLIENT_X509_CERT_URL=<YOUR_FIREBASE_CLIENT_X509_CERT_URL>
+```
+
+```
+npm install
+npm start
+```
+
+<br/>
+
 ## 🖥 **Feature**
 
 1. Firebase authentication를 활용한 구글 로그인  
@@ -70,6 +136,12 @@ Siren은 공공장소에서 소중한 노트북의 도난을 방지해주는 서
 - MongoDB - Atlas
 - Mongoose
 - Socket.io
+
+<br>
+
+## 📉 **Difficulties**
+
+모바일과 데스크탑을 구분하여 socket 통신과 상태관리를 다르게 해야 한다는 점, 한 계정에 대한 데스크탑과 모바일만 컨트롤이 되어야 하니 socket room을 이용하여 구현하였습니다. 그 과정이 매우 헷갈리고 에러가 잦았고 그때마다 저는 해당 기능에 대한 소스를 처음부터 분석하며 여러 가지 엣지 케이스들을 하나하나 생각해나가며 문제를 해결하였습니다.
 
 <br>
 
